@@ -1,28 +1,18 @@
 import React from "react";
 import ID from "../Categorias/ItemDetail";
 import { useState, useEffect } from "react";
+import { doc, getFirestore, getDoc } from "firebase/firestore";
 
 const PDC = () => {
-    const productos = 
-    [{"id" : "2" , "nombre" : "silla", "id" : "2" , "precio" : "500", "desc" : "asdjasd", "img" : "http://d3ugyf2ht6aenh.cloudfront.net/stores/912/364/products/silla-de-madera-de-pino-rosario-4-fajas1-29ccbcfea17e0540d416003121656087-640-0.jpg" },
-    {"id" : 3 , "nombre" : "silla", "id" : "2" , "precio" : "500", "desc" : "asdjasd", "img" : "http://d3ugyf2ht6aenh.cloudfront.net/stores/912/364/products/silla-de-madera-de-pino-rosario-4-fajas1-29ccbcfea17e0540d416003121656087-640-0.jpg" }, 
-    {"id" : 4 , "nombre" : "silla", "id" : "2" , "precio" : "500", "desc" : "asdjasd", "img" : "http://d3ugyf2ht6aenh.cloudfront.net/stores/912/364/products/silla-de-madera-de-pino-rosario-4-fajas1-29ccbcfea17e0540d416003121656087-640-0.jpg" }
-    ];
 
+    const codigo = "RSHsK1Qdsw2sRKOk4L8D"; //Params
     const [item, setItem] = useState({});
 
     useEffect (() => {
-        const getProduct = () =>
-            new Promise ((res, rej) =>{
-                const producto = productos.find((prod) => prod.id === "2")
-                setTimeout(() => {
-                    res(producto)
-                },2000)
-            } )
-            getProduct() 
-            .then ((info) => {
-                setItem(info)
-            }) 
+        const db = getFirestore();
+        const DocProds = doc(db, "Productos", codigo);
+        getDoc (DocProds)
+        .then (res => setItem({id: res.id, ...res.data()}));
     }, [])
 
     return(
