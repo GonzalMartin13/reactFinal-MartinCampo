@@ -1,5 +1,5 @@
 import React from "react";
-import ItemCount from "../Botones/ItemCount";
+//import ItemCount from "../Botones/ItemCount";
 
 const Item = ({id, img, nombre, descripcion}) =>{
     return(
@@ -11,7 +11,6 @@ const Item = ({id, img, nombre, descripcion}) =>{
                     <p className="card-text text-center">{descripcion} </p>
                 </div>
             </div>
-            <ItemCount stock={5} initial ={1} onAdd={0}/>
         </div>
     )
 }

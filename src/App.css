@@ -31,7 +31,7 @@
 .BodyIngreso{
   background-image: url(./IMG/fondoInicio.jpg);
   height: max-content;
-  background-size: cover;
+  background-size: contain;
 
 }
 
