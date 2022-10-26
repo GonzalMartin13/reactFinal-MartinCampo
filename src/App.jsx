@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import PLC from './compo/Contenedores/ProdLC';
 import Ingreso from './compo/ingreso/ingreso';
 import PDC from './compo/Contenedores/ProdDC';
+import Nav from './compo/Nav/nav';
 
 
 
@@ -10,12 +11,14 @@ import PDC from './compo/Contenedores/ProdDC';
 function App() {  
   return (
       <div className="BodyIngreso container-fluid">
-        <Ingreso/>
-        <Routes>        
-          <Route path="/combo" element={<PLC/>}/>
-          <Route path="/prod" element={<PLC/>}/>
-          <Route path="/:id" element={<PDC/>}/>
-        </Routes>
+        <Nav/>
+         <Routes>
+          <Route path='/home' element={<Ingreso/>}/>      
+          <Route path='/' element={<Ingreso/>}/>      
+          <Route path="/categoria/:tipo" element={<PLC/>}/>
+ 
+          <Route path="/detail" element={<PDC/>}/>
+        </Routes> 
       </div>
   )
 }

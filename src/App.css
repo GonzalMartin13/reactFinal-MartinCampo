@@ -30,12 +30,24 @@
 
 .BodyIngreso{
   background-image: url(./IMG/fondoInicio.jpg);
-  height: max-content;
-  background-size: contain;
+  height: 800px;
+  background-size: cover;
+}
+.cuadroIngreso{
+  margin-top: 13%;
+  padding: 45px 5px 45px 5px;
+  background-color: rgba(245, 245, 245, 0.328);
+  border-radius: 15px;
 
 }
 
 .nav{
     z-index: 1;
     border-bottom: double grey 5px;
+}
+
+.boton{
+  width: 25%;
+  border-radius: 25px;
+  border: solid white 3px;
 }

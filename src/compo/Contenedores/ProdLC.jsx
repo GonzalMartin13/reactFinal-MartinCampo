@@ -1,5 +1,4 @@
 import React from "react";
-//import { TraerListaFB } from "../../Hooks/FB";
 import IL from "../Lists/ProdList";
 import { useState, useEffect } from "react";
 import { collection, getFirestore, query, where, getDocs } from "firebase/firestore";
@@ -9,14 +8,13 @@ import { useParams } from "react-router-dom";
 const PLC = () => {
 
     const [items, setItems] = useState([]);
-    const Combo = "combo"; //UseParams
-    const Cat = "prod"; //UseParams
+    const { tipo } = useParams();
 
     useEffect(() => {
         const db = getFirestore();
         const ColeccionProds = collection(db,"Productos");
-        const ColecionCats = query(ColeccionProds, where("categoria", "==", Cat ));
-        if (Cat) {
+        const ColecionCats = query(ColeccionProds, where("categoria", "===", tipo ));
+        if (tipo) {
             getDocs(ColecionCats)
                 .then(res => setItems(res.docs.map(product => ({id: product.id, ...product.data()}))));
         } else {
@@ -24,7 +22,8 @@ const PLC = () => {
                 .then(res => setItems( {id: res.id, ...res.data()}));
         };
 
-    });
+
+    },[tipo]);
     
 
     return(
